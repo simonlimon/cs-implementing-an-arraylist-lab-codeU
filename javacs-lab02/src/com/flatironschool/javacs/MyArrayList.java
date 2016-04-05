@@ -197,13 +197,24 @@ public class MyArrayList<E> implements List<E> {
 			return false;
 		}
 		remove(index);
+		System.out.println(index);
 		return true;
 	}
 
 	@Override
 	public E remove(int index) {
-		// TODO: fill in this method.
-		return null;
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		}
+
+		E temp = get(index);
+
+		for (int i = index; i < size-1; i++) {
+			array[i] = array [i+1];
+		}
+
+		size--;
+		return temp;
 	}
 
 	@Override
