@@ -62,7 +62,20 @@ public class MyArrayList<E> implements List<E> {
 		if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
 		}
-		// TODO: fill in the rest of this method
+
+		if (size >= array.length + 1) {
+			// make a bigger array and copy over the elements
+			E[] bigger = (E[]) new Object[array.length * 2];
+			System.arraycopy(array, 0, bigger, 0, array.length);
+			array = bigger;
+		}
+
+		E[] trailing = (E[]) new Object[size - index];
+		System.arraycopy(array, index, trailing, 0, trailing.length);
+		System.arraycopy(trailing, 0, array, index+1, trailing.length);
+
+		array[index] = element;
+		size++;
 	}
 
 	@Override
