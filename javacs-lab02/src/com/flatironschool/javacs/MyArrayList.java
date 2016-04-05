@@ -120,7 +120,7 @@ public class MyArrayList<E> implements List<E> {
 	 * Handles the special case that the target is null.
 	 * 
 	 * @param target
-	 * @param object
+	 * @param element
 	 */
 	private boolean equals(Object target, Object element) {
 		if (target == null) {
@@ -202,8 +202,12 @@ public class MyArrayList<E> implements List<E> {
 
 	@Override
 	public E set(int index, E element) {
-		// TODO: fill in this method.
-		return null;
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		}
+		E temp = array[index];
+		array[index] = element;
+		return temp;
 	}
 
 	@Override
