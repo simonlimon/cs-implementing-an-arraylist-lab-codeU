@@ -111,8 +111,15 @@ public class MyArrayList<E> implements List<E> {
 
 	@Override
 	public int indexOf(Object target) {
-		// TODO: fill in this method
-		return 0;
+		for (int i = 0; i < array.length; i++) {
+			try {
+				if (target==null ? get(i)==null : target.equals(get(i)))
+					return i;
+			} catch (IndexOutOfBoundsException e) {
+				break;
+			}
+		}
+		return -1;
 	}
 
 	/** Checks whether an element of the array is the target.
